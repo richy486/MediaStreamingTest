@@ -1,5 +1,5 @@
 //
-//  MediaViewController.swift
+//  ChromeCastViewController.swift
 //  ChromeCastTest
 //
 //  Created by Richard Adem on 11/2/16.
@@ -15,13 +15,13 @@ enum PlaybackMode {
     case remote
 }
 
-class MediaViewController: UIViewController {
+class ChromeCastViewController: UIViewController {
     
     // MARK: - View
     
-    var contentView:MediaView {
+    var contentView:ChromeCastView {
         get {
-            return self.view as! MediaView
+            return self.view as! ChromeCastView
         }
     }
     
@@ -35,9 +35,10 @@ class MediaViewController: UIViewController {
     // MARK: - View lifecycle
     
     override func loadView() {
-        self.view = MediaView()
+        self.view = ChromeCastView()
         
         _sessionManager.add(self)
+        //tabBarItem = UITabBarItem(title: "ChromeCast", image: UIImage(named: "NotConnected"), selectedImage: UIImage(named: "Connected"))
         // Relationships between view controller and view
     }
 
@@ -72,7 +73,7 @@ class MediaViewController: UIViewController {
 }
 
 // MARK - Media controls
-extension MediaViewController {
+extension ChromeCastViewController {
     
     func continueAfterPlayButtonClicked() -> Bool {
         print("continueAfterPlayButtonClicked")
@@ -121,13 +122,13 @@ extension MediaViewController {
             return
         }
         
-        var playPosition = TimeInterval(0)
-        var paused = false
+        //var playPosition = TimeInterval(0)
+        //var paused = false
         var ended = false
         
         if _playbackMode == .remote {
-            playPosition = _castMediaController.lastKnownStreamPosition
-            paused = _castMediaController.lastKnownPlayerState == .paused
+            //playPosition = _castMediaController.lastKnownStreamPosition
+            //paused = _castMediaController.lastKnownPlayerState == .paused
             ended = _castMediaController.lastKnownPlayerState == .idle
             
             print("last player state: \(_castMediaController.lastKnownPlayerState), ended: \(ended)")
@@ -174,14 +175,14 @@ extension MediaViewController {
  
 }
 
-extension MediaViewController: GCKSessionManagerListener {
+extension ChromeCastViewController: GCKSessionManagerListener {
     
     func sessionManager(_ sessionManager: GCKSessionManager, didStart session: GCKSession) {
-        print("MediaViewController: sessionManager didStartSession \(session)")
+        print("ChromeCastViewController: sessionManager didStartSession \(session)")
         switchToRemotePlayback()
     }
     func sessionManager(_ sessionManager: GCKSessionManager, didResumeSession session: GCKSession) {
-        print("MediaViewController: sessionManager didResumeSession \(session)")
+        print("ChromeCastViewController: sessionManager didResumeSession \(session)")
         switchToRemotePlayback()
     }
     
@@ -197,7 +198,7 @@ extension MediaViewController: GCKSessionManagerListener {
     
 }
 
-//extension MediaViewController: LocalPlayerViewDelegate {
+//extension ChromeCastViewController: LocalPlayerViewDelegate {
     
     
     

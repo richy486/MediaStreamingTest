@@ -1,5 +1,5 @@
 //
-//  MediaView.swiftView
+//  ChromeCastView.swiftView
 //  ChromeCastTest
 //
 //  Created by Richard Adem on 11/2/16.
@@ -9,7 +9,7 @@
 import UIKit
 import GoogleCast
 
-class MediaView: UIView {
+class ChromeCastView: UIView {
     
     // MARK - Subviews lazy var
     lazy var chromeCastButton:GCKUICastButton = {
@@ -33,6 +33,16 @@ class MediaView: UIView {
         chromeCastButton.isHidden = false
         self.addSubview(chromeCastButton)
         return chromeCastButton
+    }()
+    
+    lazy var instructionLabel:UILabel = {
+        let instructionLabel = UILabel()
+        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
+        instructionLabel.text = "Chrome Cast button will only appear if there is a chromecast device on the network"
+        instructionLabel.textColor = UIColor.black
+        instructionLabel.numberOfLines = 0
+        self.addSubview(instructionLabel)
+        return instructionLabel
     }()
     
     internal var hasSetupConstraints = false
@@ -59,6 +69,11 @@ class MediaView: UIView {
             chromeCastButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
             chromeCastButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
             chromeCastButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+            
+            
+            instructionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+            instructionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+            instructionLabel.topAnchor.constraint(equalTo: chromeCastButton.bottomAnchor, constant: 20).isActive = true
         }
     }
 

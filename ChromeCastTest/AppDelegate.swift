@@ -17,17 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
+        // Setup Chromecast
         let chromeApplicationID = "4F8B3483"//applicationID()
-        
         let castOptions = GCKCastOptions(receiverApplicationID: chromeApplicationID)
         GCKCastContext.setSharedInstanceWith(castOptions)
-        
         GCKLogger.sharedInstance().delegate = self
         
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            window.rootViewController = MediaViewController()
+            
+            let tabBarController = UITabBarController()
+            //tabBarController.viewControllers = [ChromeCastViewController(), AirPlayViewController()]
+            
+            let viewControllers = [ChromeCastViewController(), AirPlayViewController()]
+            viewControllers[0].tabBarItem = UITabBarItem(title: "ChromeCast", image: UIImage(named: "NotConnected"), selectedImage: UIImage(named: "Connected"))
+            viewControllers[1].tabBarItem = UITabBarItem(title: "AirPlay", image: UIImage(named: "AirPlay"), selectedImage: nil)
+            tabBarController.setViewControllers(viewControllers, animated: false)
+            //tabBarController.selectedIndex = 0
+            
+            window.rootViewController = tabBarController
             window.backgroundColor = UIColor.white
             window.makeKeyAndVisible()
         }

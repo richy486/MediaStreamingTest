@@ -1,28 +1,30 @@
 //
-//  MainViewController.swift
+//  AirPlayViewController.swift
 //  ChromeCastTest
 //
-//  Created by Richard Adem on 11/1/16.
+//  Created by Richard Adem on 11/3/16.
 //  Copyright (c) 2016 Richard Adem. All rights reserved.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
+class AirPlayViewController: UIViewController {
     
     // MARK: - View
     
-    var contentView:MainView {
+    var contentView:AirPlayView {
         get {
-            return self.view as! MainView
+            return self.view as! AirPlayView
         }
     }
     
     // MARK: - View lifecycle
     
     override func loadView() {
-        self.view = MainView()
+        self.view = AirPlayView()
         
+        
+        //tabBarItem = UITabBarItem(title: "AirPlay", image: UIImage(named: "AirPlay"), selectedImage: nil)
         // Relationships between view controller and view
     }
 
@@ -30,6 +32,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        contentView.videoView.play()
     }
     
     // MARK: - Actions

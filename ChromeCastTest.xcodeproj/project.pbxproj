@@ -13,10 +13,11 @@
 		CA0F4DAF1DC8CE0500ECD21A /* GoogleCastResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA0F4DAE1DC8CE0500ECD21A /* GoogleCastResources.bundle */; };
 		CA0F4DB41DC8D24200ECD21A /* GoogleCast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA0F4DB11DC8CF1500ECD21A /* GoogleCast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA0F4DB61DC8D25100ECD21A /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0F4DB11DC8CF1500ECD21A /* GoogleCast.framework */; };
-		CA5E982E1DCA81AE00AE13C2 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E982C1DCA81AE00AE13C2 /* MediaView.swift */; };
-		CA5E982F1DCA81AE00AE13C2 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E982D1DCA81AE00AE13C2 /* MediaViewController.swift */; };
-		CAF2DAC51DC953F100625466 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2DAC31DC953F100625466 /* MainView.swift */; };
-		CAF2DAC61DC953F100625466 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2DAC41DC953F100625466 /* MainViewController.swift */; };
+		CA5E982E1DCA81AE00AE13C2 /* ChromeCastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E982C1DCA81AE00AE13C2 /* ChromeCastView.swift */; };
+		CA5E982F1DCA81AE00AE13C2 /* ChromeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E982D1DCA81AE00AE13C2 /* ChromeCastViewController.swift */; };
+		CA5E98321DCB94F600AE13C2 /* AirPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E98301DCB94F600AE13C2 /* AirPlayView.swift */; };
+		CA5E98331DCB94F600AE13C2 /* AirPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E98311DCB94F600AE13C2 /* AirPlayViewController.swift */; };
+		CA5E98351DCB9DEB00AE13C2 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5E98341DCB9DEB00AE13C2 /* VideoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,10 +43,11 @@
 		CA0F4DAA1DC8CA9800ECD21A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		CA0F4DAE1DC8CE0500ECD21A /* GoogleCastResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleCastResources.bundle; path = ChromeCastTest/ThirdParty/GoogleCastSDK/GoogleCast.framework/GoogleCastResources.bundle; sourceTree = "<group>"; };
 		CA0F4DB11DC8CF1500ECD21A /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = ChromeCastTest/ThirdParty/GoogleCastSDK/GoogleCast.framework; sourceTree = "<group>"; };
-		CA5E982C1DCA81AE00AE13C2 /* MediaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
-		CA5E982D1DCA81AE00AE13C2 /* MediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
-		CAF2DAC31DC953F100625466 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		CAF2DAC41DC953F100625466 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CA5E982C1DCA81AE00AE13C2 /* ChromeCastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromeCastView.swift; sourceTree = "<group>"; };
+		CA5E982D1DCA81AE00AE13C2 /* ChromeCastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromeCastViewController.swift; sourceTree = "<group>"; };
+		CA5E98301DCB94F600AE13C2 /* AirPlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlayView.swift; sourceTree = "<group>"; };
+		CA5E98311DCB94F600AE13C2 /* AirPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlayViewController.swift; sourceTree = "<group>"; };
+		CA5E98341DCB9DEB00AE13C2 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				CA0F4D981DC8CA7500ECD21A /* AppDelegate.swift */,
-				CAF2DAC41DC953F100625466 /* MainViewController.swift */,
-				CAF2DAC31DC953F100625466 /* MainView.swift */,
-				CA5E982D1DCA81AE00AE13C2 /* MediaViewController.swift */,
-				CA5E982C1DCA81AE00AE13C2 /* MediaView.swift */,
+				CA5E982D1DCA81AE00AE13C2 /* ChromeCastViewController.swift */,
+				CA5E982C1DCA81AE00AE13C2 /* ChromeCastView.swift */,
+				CA5E98311DCB94F600AE13C2 /* AirPlayViewController.swift */,
+				CA5E98301DCB94F600AE13C2 /* AirPlayView.swift */,
+				CA5E98341DCB9DEB00AE13C2 /* VideoView.swift */,
 				CA0F4D9F1DC8CA7500ECD21A /* Assets.xcassets */,
 				CA0F4DA11DC8CA7500ECD21A /* LaunchScreen.storyboard */,
 				CA0F4DA41DC8CA7500ECD21A /* Info.plist */,
@@ -176,11 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAF2DAC61DC953F100625466 /* MainViewController.swift in Sources */,
-				CA5E982F1DCA81AE00AE13C2 /* MediaViewController.swift in Sources */,
-				CA5E982E1DCA81AE00AE13C2 /* MediaView.swift in Sources */,
+				CA5E98351DCB9DEB00AE13C2 /* VideoView.swift in Sources */,
+				CA5E982F1DCA81AE00AE13C2 /* ChromeCastViewController.swift in Sources */,
+				CA5E98321DCB94F600AE13C2 /* AirPlayView.swift in Sources */,
+				CA5E98331DCB94F600AE13C2 /* AirPlayViewController.swift in Sources */,
+				CA5E982E1DCA81AE00AE13C2 /* ChromeCastView.swift in Sources */,
 				CA0F4D991DC8CA7500ECD21A /* AppDelegate.swift in Sources */,
-				CAF2DAC51DC953F100625466 /* MainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +305,7 @@
 					"$(PROJECT_DIR)/ChromeCastTest/ThirdParty/GoogleCastSDK",
 				);
 				INFOPLIST_FILE = ChromeCastTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -322,6 +327,7 @@
 					"$(PROJECT_DIR)/ChromeCastTest/ThirdParty/GoogleCastSDK",
 				);
 				INFOPLIST_FILE = ChromeCastTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",

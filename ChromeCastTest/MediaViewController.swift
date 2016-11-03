@@ -9,6 +9,12 @@
 import UIKit
 import GoogleCast
 
+enum PlaybackMode {
+    case none
+    case local
+    case remote
+}
+
 class MediaViewController: UIViewController {
     
     // MARK: - View
@@ -24,6 +30,7 @@ class MediaViewController: UIViewController {
     let _sessionManager = GCKCastContext.sharedInstance().sessionManager
     var _castSession:GCKCastSession? = nil
     let _castMediaController = GCKUIMediaController()
+    var _playbackMode:PlaybackMode = .none
     
     // MARK: - View lifecycle
     
@@ -71,7 +78,7 @@ extension MediaViewController {
         print("continueAfterPlayButtonClicked")
         let hasConnectedCastSession = GCKCastContext.sharedInstance().sessionManager.hasConnectedSession()
         if hasConnectedCastSession {
-//            playSelectedItemRemotely()
+            playSelectedItemRemotely()
             return false
         }
         return true
@@ -86,8 +93,8 @@ extension MediaViewController {
         metadata.addImage(GCKImage(url: URL(string: "https://placekitten.com/480/720")!, width: 480, height: 720))
         metadata.addImage(GCKImage(url: URL(string: "http://www.fillmurray.com/480/720")!, width: 480, height: 720))
         
-        
-        let mediaInfo = GCKMediaInformation(contentID: "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"
+        //"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"
+        let mediaInfo = GCKMediaInformation(contentID: "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/GoogleIO-2014-CastingToTheFuture.mp4"
             , streamType: .buffered
             , contentType: "video/mp4"
             , metadata: metadata
@@ -100,10 +107,69 @@ extension MediaViewController {
         return mediaInfo
     }
     
+    func playSelectedItemRemotely() {
+        if let castSession = GCKCastContext.sharedInstance().sessionManager.currentCastSession {
+            castSession.remoteMediaClient?.loadMedia(buildMediaInformation(), autoplay: true)
+        }
+        
+    }
+    
     func switchToLocalPlayback() {
+        print("switchToLocalPlayback")
+        
+        guard _playbackMode != .local else {
+            return
+        }
+        
+        var playPosition = TimeInterval(0)
+        var paused = false
+        var ended = false
+        
+        if _playbackMode == .remote {
+            playPosition = _castMediaController.lastKnownStreamPosition
+            paused = _castMediaController.lastKnownPlayerState == .paused
+            ended = _castMediaController.lastKnownPlayerState == .idle
+            
+            print("last player state: \(_castMediaController.lastKnownPlayerState), ended: \(ended)")
+        }
+        
+        // populateMediaInfo()...
+        
+        _castSession?.remoteMediaClient?.remove(self as! GCKRemoteMediaClientListener)
+        _castSession = nil
+        
+        _playbackMode = .local
     }
     
     func switchToRemotePlayback() {
+        print("switchToRemotePlayback; ")
+        
+        guard _playbackMode != .remote else {
+            return
+        }
+        
+        _castSession = _sessionManager.currentCastSession
+        
+        // If we were playing locally, load the local media on the remote player
+        if _playbackMode == .local {
+            let playPosition = TimeInterval(0)
+            let paused = false
+            let builder = GCKMediaQueueItemBuilder()
+            
+            builder.mediaInformation = buildMediaInformation()
+            builder.autoplay = !paused
+            builder.preloadTime = TimeInterval(30)
+            
+            let item = builder.build()
+            
+            _castSession?.remoteMediaClient?.queueLoad([item]
+                , start: 0
+                , playPosition: playPosition
+                , repeatMode: .all
+                , customData: nil)
+            
+        }
+        _playbackMode = .remote
     }
  
 }

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            window.rootViewController = MainViewController()
+            window.rootViewController = MediaViewController()
             window.backgroundColor = UIColor.white
             window.makeKeyAndVisible()
         }
